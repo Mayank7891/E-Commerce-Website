@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            background: radial-gradient(#fff, #ffd6d6);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="Images/logo.jpg" width="60px" alt=""></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="home.html">About</a></li>
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="Images/cart.png" width="30px" height="30px" alt=""></a>
+                <img src="Images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+    </div>
+    
+    <!------------Contact-page------------>
+    <div class="contact-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="Images/image1.png" width="100%" alt="">
+                </div>
+                <div class="col-2">
+                    <div class="wrapper">
+                        <h2>Contact Us</h2>
+                        <hr id="Indicator">
+                        <div id="error_message"></div>
+                        <form id="myform" onsubmit="return validation()">
+                            <div class="input_field">
+                                <input type="text" placeholder="Name" id="name">
+                            </div>
+                            <div class="input_field">
+                                <input type="text" placeholder="Phone No." id="phone">
+                            </div>
+                            <div class="input_field">
+                                <input type="text" placeholder="Email" id="email">
+                            </div>
+                            <div class="input_field">
+                                <textarea id="message" placeholder="Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>                                            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------Footer--------------->
+    <div class="footer">
+        <div class="media-icons">
+            <a href="#"><i class="fa fa-facebook-f"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-youtube-play"></i></a>
+        </div>
+        <p class="copyright"><i class="fa fa-copyright"></i> 2022 - Mayank Maloo</p>
+    </div>    
+
+    <!------------------JS for Toggle Menu------------->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px")
+            {
+                MenuItems.style.maxHeight = "200px";
+            }
+            else
+            {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+
+    <!----------------JS for Validation------------------->
+    <script>
+        function validation(){
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var error_message = document.getElementById("error_message");
+            var text;
+
+            error_message.style.padding = "10px";
+
+            if(name.length <5){
+                text = "Please Enter Valid Name";
+                error_message.innerHTML = text;
+                return false;
+            }
+
+            if(isNaN(phone) || phone.length != 10){
+                text = "Please Enter Valid Phone No.";
+                error_message.innerHTML = text;
+                return false;
+            }
+
+            if(email.indexOf("@") == -1 || email.length < 6){
+                text = "Please Enter Valid Email";
+                error_message.innerHTML = text;
+                return false;
+            }
+
+            if(message.length <= 20){
+                text = "Please Enter More Than 20 Characters";
+                error_message.innerHTML = text;
+                return false;
+            }
+            alert("Form Submitted Successfully");
+            return true;
+        }
+    </script>
+</body>
+</html>
